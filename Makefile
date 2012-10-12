@@ -30,7 +30,7 @@ src/pm-bitmaps.h:
 	@generators/pacman-bitmaps.py > src/pm-bitmaps.h
 
 
-push:
+put:
 	@cd bin && avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 57600 -U flash:w:monochron.hex
 
 
