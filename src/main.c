@@ -21,10 +21,6 @@ typedef unsigned int uint32_t __attribute__ ((__mode__ (__SI__)));
 typedef unsigned int uint8_t __attribute__((__mode__(__QI__)));
 typedef unsigned int uint16 __attribute__ ((__mode__ (__HI__)));
 typedef unsigned char prog_uchar __attribute__((__progmem__));
-typedef signed long s32;
-typedef signed long long s64;
-typedef signed char s08;
-typedef signed short s16;
 
 
 typedef int32_t prog_int32_t __attribute__((__progmem__));
@@ -32,7 +28,6 @@ typedef int16_t prog_int16_t __attribute__((__progmem__));
 typedef int8_t prog_int8_t __attribute__((__progmem__));
 typedef int64_t intmax_t;
 typedef int64_t prog_int64_t __attribute__((__progmem__));
-typedef uint64_t uintmax_t;
 
 typedef struct {
  int quot;
