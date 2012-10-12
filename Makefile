@@ -35,7 +35,7 @@ put:
 
 
 clean:
-	@touch bin/tmp src/indented.c src/pacman-bitmaps.h
+	@touch bin/tmp src/indented.c src/pm-bitmaps.h
 	@rm bin/* src/indented.c src/pacman-bitmaps.h
 	@touch tmp~ && rm *~
 	@cd src && touch tmp~ && rm *~
