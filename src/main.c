@@ -1,44 +1,29 @@
+
 typedef enum {
  I2C_IDLE = 0, I2C_BUSY = 1,
  I2C_MASTER_TX = 2, I2C_MASTER_RX = 3,
  I2C_SLAVE_TX = 4, I2C_SLAVE_RX = 5
 } eI2cStateType;
 
+
 typedef char prog_char __attribute__((__progmem__));
-typedef int int32_t __attribute__ ((__mode__ (__SI__)));
+
 typedef int int8_t __attribute__((__mode__(__QI__)));
-typedef int (*__compar_fn_t)(const void *, const void *);
-typedef int wchar_t;
-typedef int int64_t __attribute__((__mode__(__DI__)));
-typedef int int16_t __attribute__ ((__mode__ (__HI__)));
-typedef unsigned long u32;
-typedef unsigned int size_t;
-typedef unsigned short u16;
-typedef unsigned char u08;
-typedef unsigned int uint64_t __attribute__((__mode__(__DI__)));
-typedef unsigned long long u64;
-typedef unsigned int uint32_t __attribute__ ((__mode__ (__SI__)));
 typedef unsigned int uint8_t __attribute__((__mode__(__QI__)));
+typedef unsigned char u08;
+
+typedef int int16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned short u16;
 typedef unsigned int uint16 __attribute__ ((__mode__ (__HI__)));
-typedef unsigned char prog_uchar __attribute__((__progmem__));
 
 
-typedef int32_t prog_int32_t __attribute__((__progmem__));
-typedef int16_t prog_int16_t __attribute__((__progmem__));
-typedef int8_t prog_int8_t __attribute__((__progmem__));
-typedef int64_t intmax_t;
-typedef int64_t prog_int64_t __attribute__((__progmem__));
+typedef int int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int uint32_t __attribute__ ((__mode__ (__SI__)));
+
+typedef unsigned int size_t;
+
 
 typedef struct {
- int quot;
- int rem;
-} div_t;
-typedef struct {
- long quot;
- long rem;
-} ldiv_t;
-typedef struct
-{
     unsigned char low;
     unsigned char high;
     unsigned char extended;
@@ -60,11 +45,9 @@ extern char *strcat_P(char *, const prog_char *);
 extern void __eerd_block_m328p (void *__dst, const void *__src, size_t __n);
 extern char *strdup(const char *s1);
 extern void delay_s(uint8_t s);
-extern ldiv_t ldiv(long __num, long __denom) __asm__("__divmodsi4") __attribute__((__const__));
 extern uint8_t leapyear(uint16 y);
 extern long random_r(unsigned long *__ctx);
 extern void glcdFillCircle(u08 xcenter, u08 ycenter, u08 radius, u08 color);
-extern div_t div(int __num, int __denom) __asm__("__divmodhi4") __attribute__((__const__));
 extern long atol(const char *__s) __attribute__((__pure__));
 extern void glcdInit(void);
 extern void glcdDataWrite(u08 data);
@@ -166,7 +149,6 @@ extern u08 i2cMasterReceiveNI(u08 deviceAddr, u08 length, u08 *data);
 extern void drawsegment(uint8_t s, uint8_t x, uint8_t y, uint8_t inverted);
 extern char *strupr(char *);
 extern void glcdRectangle(u08 x, u08 y, u08 a, u08 b);
-extern void *bsearch(const void *__key, const void *__base, size_t __nmemb, size_t __size, int (*__compar)(const void *, const void *));
 extern void printnumber(uint8_t n, uint8_t inverted);
 extern void i2cMasterSend(u08 deviceAddr, u08 length, u08 *data);
 extern char *strtok(char *, const char *);
@@ -1411,9 +1393,6 @@ void glcdDelay(u16 p) {
     for (j = 0; j < 10; j++);
 }
 
-extern void *bsearch(const void *__key, const void *__base, size_t __nmemb,
-                     size_t __size, int (*__compar) (const void *,
-                                                     const void *));
 
 volatile uint8_t old_h, old_m, old_s;
 volatile uint8_t timeunknown = 1;
