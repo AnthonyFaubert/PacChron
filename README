@@ -1,3 +1,10 @@
 
+To get the repo:
+git clone https://github.com/AnthonyFaubert/PacChron.git
+
+To push to the repo:
+Set the "origin" remote repo:
 git remote add origin https://github.com/AnthonyFaubert/PacChron.git
+
+Actually push to the remote repo "origin":
 git push origin master
