@@ -43,13 +43,3 @@ clean:
 indent:
 	@indent -npsl -npcs -brf -ce -nut -br -cbi4 -cli4 src/main.c -o src/indented.c
 
-
-
-
-
-
-#COMPILEARGS="-mmcu=atmega328p -I. -g -Os -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Wall -Wstrict-prototypes -DF_CPU=8000000 -std=gnu99"
-
-#	@cd bin && avr-gcc $(COMPILEARGS) -Wa,-adhlns=main.o pacman.o main.o --output monochron.elf -Wl,-Map=monochron.map,--cref
-#	@avr-gcc $(COMPILEARGS) -DTXMODE -c src/main.c -o bin/main.o
-#	@avr-gcc $(COMPILEARGS) -DTXMODE -c src/pacman.c -o bin/pacman.o
