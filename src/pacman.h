@@ -15,3 +15,4 @@ typedef struct {
 extern void init_pacman(pacman_state*);
 extern void change_pacman(pacman_state*);
 extern void pacman_gobble(pacman_state *, char, char);
+extern void pacman_gobble2(pacman_state *);

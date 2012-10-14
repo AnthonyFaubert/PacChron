@@ -18,25 +18,25 @@ bin/monochron.hex: bin/monochron.elf
 
 
 bin/monochron.elf: bin/main.o bin/pacman.o
-	@cd bin && avr-gcc $(FLAGS) main.o pacman.o -o monochron.elf
+	cd bin && avr-gcc $(FLAGS) main.o pacman.o -o monochron.elf
 
-bin/main.o:
-	@avr-gcc $(FLAGS) -c src/main.c -o bin/main.o
+bin/main.o: src/main.c src/avr_types.h src/pacman.h
+	avr-gcc $(FLAGS) -c src/main.c -o bin/main.o
 
-bin/pacman.o: src/pm-bitmaps.h
-	@avr-gcc $(FLAGS) -c src/pacman.c -o bin/pacman.o
+bin/pacman.o: src/pacman.c src/pm-bitmaps.h src/avr_types.h src/pacman.h
+	avr-gcc $(FLAGS) -c src/pacman.c -o bin/pacman.o
 
-src/pm-bitmaps.h:
-	@generators/pacman-bitmaps.py > src/pm-bitmaps.h
+src/pm-bitmaps.h: generators/pacman-bitmaps.py
+	generators/pacman-bitmaps.py > src/pm-bitmaps.h
 
 
 put:
-	@cd bin && avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 57600 -U flash:w:monochron.hex
+	cd bin && avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 57600 -U flash:w:monochron.hex
 
 
 clean:
-	@touch bin/tmp src/indented.c src/pacman-bitmaps.h
-	@rm bin/* src/indented.c src/pacman-bitmaps.h
+	@touch bin/tmp src/indented.c generators/pacman-bitmaps.py
+	@rm bin/* src/indented.c src/pm-bitmaps.h
 	@touch tmp~ && rm *~
 	@cd src && touch tmp~ && rm *~
 	@echo "Done!"

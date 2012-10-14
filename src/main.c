@@ -1,63 +1,12 @@
+#include "avr_types.h"
+
+
 typedef enum {
  I2C_IDLE = 0, I2C_BUSY = 1,
  I2C_MASTER_TX = 2, I2C_MASTER_RX = 3,
  I2C_SLAVE_TX = 4, I2C_SLAVE_RX = 5
 } eI2cStateType;
 
-typedef char prog_char __attribute__((__progmem__));
-typedef int int32_t __attribute__ ((__mode__ (__SI__)));
-typedef int int8_t __attribute__((__mode__(__QI__)));
-typedef int (*__compar_fn_t)(const void *, const void *);
-typedef int ptrdiff_t;
-typedef int wchar_t;
-typedef int int64_t __attribute__((__mode__(__DI__)));
-typedef int int16_t __attribute__ ((__mode__ (__HI__)));
-typedef unsigned long u32;
-typedef unsigned int size_t;
-typedef unsigned short u16;
-typedef unsigned char u08;
-typedef unsigned int uint64_t __attribute__((__mode__(__DI__)));
-typedef unsigned long long u64;
-typedef unsigned int uint32_t __attribute__ ((__mode__ (__SI__)));
-typedef unsigned int uint8_t __attribute__((__mode__(__QI__)));
-typedef unsigned int uint16 __attribute__ ((__mode__ (__HI__)));
-typedef unsigned char prog_uchar __attribute__((__progmem__));
-typedef signed long s32;
-typedef signed long long s64;
-typedef signed char s08;
-typedef signed short s16;
-
-
-typedef int32_t prog_int32_t __attribute__((__progmem__));
-typedef int8_t int_fast8_t;
-typedef uint32_t uint_least32_t;
-typedef int16_t prog_int16_t __attribute__((__progmem__));
-typedef int32_t int_fast32_t;
-typedef uint16 uintptr_t;
-typedef int16_t int_least16_t;
-typedef uint64_t uint_least64_t;
-typedef uint32_t uint_farptr_t;
-typedef uint16 uint_least16_t;
-typedef int8_t prog_int8_t __attribute__((__progmem__));
-typedef uint8_t prog_uint8_t __attribute__((__progmem__));
-typedef uint16 uint_fast16_t;
-typedef uint32_t prog_uint32_t __attribute__((__progmem__));
-typedef int64_t intmax_t;
-typedef int64_t prog_int64_t __attribute__((__progmem__));
-typedef uint8_t uint_fast8_t;
-typedef int64_t int_fast64_t;
-typedef uint64_t uintmax_t;
-typedef int16_t intptr_t;
-typedef int64_t int_least64_t;
-typedef int16_t int_fast16_t;
-typedef int32_t int_farptr_t;
-typedef uint64_t uint_fast64_t;
-typedef uint8_t uint_least8_t;
-typedef int32_t int_least32_t;
-typedef uint64_t prog_uint64_t __attribute__((__progmem__));
-typedef uint16 prog_uint16 __attribute__((__progmem__));
-typedef uint32_t uint_fast32_t;
-typedef int8_t int_least8_t;
 
 typedef struct {
  int quot;
@@ -74,7 +23,7 @@ typedef struct
     unsigned char extended;
 } __fuse_t;
 
-extern void beep(uint16 freq, uint16 duration);
+extern void beep(uint16_t freq, uint16_t duration);
 extern void glcdSetXAddress(u08 xAddr);
 extern uint32_t __eerd_dword_m328p (const uint32_t *__p) __attribute__((__pure__));
 extern size_t strspn_P(const char *__s, const prog_char * __accept) __attribute__((__pure__));
@@ -86,14 +35,12 @@ extern volatile uint8_t region;
 extern void i2cSetSlaveTransmitHandler(u08 (*i2cSlaveTx_func)(u08 transmitDataLengthMax, u08* transmitData));
 extern const prog_char * strchr_P(const prog_char *, int __val) __attribute__((__const__));
 extern void *memcpy(void *, const void *, size_t);
-extern int strncasecmp_PF (const char *s1, uint_farptr_t s2, size_t n) __attribute__((__pure__));
 extern char *strcat_P(char *, const prog_char *);
 extern void __eerd_block_m328p (void *__dst, const void *__src, size_t __n);
 extern char *strdup(const char *s1);
 extern void delay_s(uint8_t s);
 extern ldiv_t ldiv(long __num, long __denom) __asm__("__divmodsi4") __attribute__((__const__));
-extern size_t strlen_PF (uint_farptr_t src) __attribute__((__const__));
-extern uint8_t leapyear(uint16 y);
+extern uint8_t leapyear(uint16_t y);
 extern long random_r(unsigned long *__ctx);
 extern void glcdFillCircle(u08 xcenter, u08 ycenter, u08 radius, u08 color);
 extern div_t div(int __num, int __denom) __asm__("__divmodhi4") __attribute__((__const__));
@@ -118,15 +65,14 @@ extern char *strpbrk(const char *__s, const char *__accept) __attribute__((__pur
 extern void glcdLine(u08 x1, u08 y1, u08 x2, u08 y2);
 extern char *__malloc_heap_start;
 extern void *memmove(void *, const void *, size_t);
-extern void uart_init(uint16 BRR);
-extern void __eeupd_word_m328p (uint16 *__p, uint16 __value);
+extern void uart_init(uint16_t BRR);
+extern void __eeupd_word_m328p (uint16_t *__p, uint16_t __value);
 extern size_t strlen_P(const prog_char *) __attribute__((__const__));
-extern char *strncpy_PF (char *dest, uint_farptr_t src, size_t len);
 extern void glcdFillRectangle(u08 x, u08 y, u08 a, u08 b, u08 color);
 extern void *memmem(const void *, size_t, const void *, size_t) __attribute__((__pure__));
 extern char *strchrnul(const char *, int) __attribute__((__pure__));
 extern char *strcasestr(const char *, const char *) __attribute__((__pure__));
-extern void uart_putw_hex(uint16 w);
+extern void uart_putw_hex(uint16_t w);
 extern void delay_ms(unsigned char ms);
 extern void i2cSendStop(void);
 extern size_t strlcpy(char *, const char *, size_t);
@@ -134,7 +80,6 @@ extern void i2cSetLocalDeviceAddr(u08 deviceAddr, u08 genCallEn);
 extern char *strcasestr_P(const char *, const prog_char *) __attribute__((__pure__));
 extern void *memccpy(void *, const void *, int, size_t);
 extern void uart_putdw_hex(uint32_t dw);
-extern char *strncat_PF (char *dest, uint_farptr_t src, size_t len);
 extern void uart_puts(const char* str);
 extern int ffs (int __val) __attribute__((__const__));
 extern char *itoa(int __val, char *__s, int __radix);
@@ -142,9 +87,9 @@ extern void abort(void) __attribute__((__noreturn__));
 extern char *strncpy_P(char *, const prog_char *, size_t);
 extern void __eewr_float_m328p (float *__p, float __value);
 extern void ROM_putstring(const char *str, uint8_t nl);
-extern void uart_putw_dec(uint16 w);
+extern void uart_putw_dec(uint16_t w);
 extern char *__malloc_heap_end;
-extern uint16 __eerd_word_m328p (const uint16 *__p) __attribute__((__pure__));
+extern uint16_t __eerd_word_m328p (const uint16_t *__p) __attribute__((__pure__));
 extern char *strsep(char **, const char *);
 extern char *ultoa(unsigned long int __val, char *__s, int __radix);
 extern void RAM_putstring(char *str);
@@ -156,9 +101,8 @@ extern int ffsll (long long __val) __attribute__((__const__));
 extern u08 i2cGetStatus(void);
 extern const prog_char * strchrnul_P(const prog_char *, int __val) __attribute__((__const__));
 extern void *memset(void *, int, size_t);
-extern int strcmp_PF (const char *s1, uint_farptr_t s2) __attribute__((__pure__));
 extern u08 i2cGetReceivedByte(void);
-extern void __eewr_word_m328p (uint16 *__p, uint16 __value);
+extern void __eewr_word_m328p (uint16_t *__p, uint16_t __value);
 extern float __eerd_float_m328p (const float *__p) __attribute__((__pure__));
 extern void glcdGotoChar(u08 line, u08 col);
 extern void i2cMasterReceive(u08 deviceAddr, u08 length, u08* data);
@@ -170,7 +114,6 @@ extern size_t strnlen_P(const prog_char *, size_t) __attribute__((__const__));
 extern void *memrchr(const void *, int, size_t) __attribute__((__pure__));
 extern void drawArrow(uint8_t x, uint8_t y, uint8_t l);
 extern void __eeupd_byte_m328p (uint8_t *__p, uint8_t __value);
-extern size_t strnlen_PF (uint_farptr_t src, size_t len) __attribute__((__const__));
 extern void __eeupd_block_m328p (const void *__src, void *__dst, size_t __n);
 extern void i2cReceiveByte(u08 ackFlag);
 extern void __eewr_byte_m328p (uint8_t *__p, uint8_t __value);
@@ -183,7 +126,6 @@ extern void i2cSendStart(void);
 extern void __eeupd_float_m328p (float *__p, float __value);
 extern void *malloc(size_t __size) __attribute__((__malloc__));
 extern void glcdSetAddress(u08 x, u08 yLine);
-extern size_t strlcpy_PF (char *dst, uint_farptr_t src, size_t siz);
 extern volatile uint8_t timeoutcounter;
 extern volatile uint8_t old_m, old_h;
 extern char *strcpy_P(char *, const prog_char *);
@@ -196,7 +138,6 @@ extern void *realloc(void *__ptr, size_t __size) __attribute__((__malloc__));
 extern char *strncpy(char *, const char *, size_t);
 extern int strncasecmp_P(const char *, const prog_char *, size_t) __attribute__((__pure__));
 extern size_t strlen(const char *) __attribute__((__pure__));
-extern char *strcat_PF (char *dest, uint_farptr_t src);
 extern void glcdControlWrite(u08 controller, u08 data);
 extern void initdisplay(uint8_t inverted);
 extern size_t strspn(const char *__s, const char *__accept) __attribute__((__pure__));
@@ -211,9 +152,7 @@ extern void *bsearch(const void *__key, const void *__base, size_t __nmemb, size
 extern void printnumber(uint8_t n, uint8_t inverted);
 extern void i2cMasterSend(u08 deviceAddr, u08 length, u08 *data);
 extern char *strtok(char *, const char *);
-extern volatile uint8_t last_buttonstate, just_pressed, pressed;
 extern char *utoa(unsigned int __val, char *__s, int __radix);
-extern int strncmp_PF (const char *s1, uint_farptr_t s2, size_t n) __attribute__((__pure__));
 extern volatile uint8_t date_m, date_d, date_y;
 extern void glcdSetYAddress(u08 yAddr);
 extern void i2cInit(void);
@@ -227,12 +166,10 @@ extern char *strcat(char *, const char *);
 extern char *strtok_r(char *, const char *, char **);
 extern char *strsep_P(char **__sp, const prog_char * __delim);
 extern void __eeupd_dword_m328p (uint32_t *__p, uint32_t __value);
-extern char *strcpy_PF (char *dest, uint_farptr_t src);
 extern void init_crand(void);
 extern void srandom(unsigned long __seed);
 extern volatile uint8_t buttonholdcounter;
 extern char *strstr(const char *, const char *) __attribute__((__pure__));
-extern void *memcpy_PF (void *dest, uint_farptr_t src, size_t len);
 extern int ffsl (long __val) __attribute__((__const__));
 extern void tick(void);
 extern void glcdInitHW(void);
@@ -249,7 +186,6 @@ extern void free(void *__ptr);
 extern void *memchr(const void *, int, size_t) __attribute__((__pure__));
 extern volatile uint8_t screenmutex;
 extern int rand_r(unsigned long *__ctx);
-extern char *strstr_PF (const char *s1, uint_farptr_t s2);
 extern uint8_t dotw(uint8_t mon, uint8_t day, uint8_t yr);
 extern void draw7seg(uint8_t x, uint8_t y, uint8_t segs, uint8_t inverted);
 extern char *strcpy(char *, const char *);
@@ -260,16 +196,13 @@ extern size_t __malloc_margin;
 extern void drawhseg(uint8_t x, uint8_t y, uint8_t inverted);
 extern long random(void);
 extern void i2cSetBitrate(u16 bitrateKHz);
-extern int memcmp_PF(const void *, uint_farptr_t, size_t) __attribute__((__pure__));
 extern float random_angle_rads(void);
 extern size_t strlcat(char *, const char *, size_t);
-extern int strcasecmp_PF (const char *s1, uint_farptr_t s2) __attribute__((__pure__));
 extern char uart_getchar(void);
 extern void glcdPutStr(char *data, uint8_t inverted);
 extern void glcdCircle(u08 xcenter, u08 ycenter, u08 radius, u08 color);
 extern void glcdClearScreen(void);
 extern void i2cWaitForComplete(void);
-extern size_t strlcat_PF (char *dst, uint_farptr_t src, size_t siz);
 extern int strcasecmp(const char *, const char *) __attribute__((__pure__));
 extern void glcdHome(void);
 extern volatile uint8_t second_changed, minute_changed, hour_changed;
@@ -278,7 +211,7 @@ extern int abs(int __i) __attribute__((__const__));
 extern char *strrev(char *);
 
 static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
-static inline void _delay_loop_2(uint16 __count) __attribute__((always_inline));
+static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
 
 #include "pacman.h"
 
@@ -287,23 +220,23 @@ void _delay_loop_1(uint8_t __count) {
                     :"0"(__count)
     );
 }
-void _delay_loop_2(uint16 __count) {
+void _delay_loop_2(uint16_t __count) {
   __asm__ volatile ("1: sbiw %0,1" "\n\t" "brne 1b":"=w" (__count):"0"(__count));
 }
 
-static inline void delayHalfCountUsec(uint16 count) {  // 16 bit counter, max 65535 x 0.5 usec, maximum 32.787 msec
+static inline void delayHalfCountUsec(uint16_t count) {  // 16 bit counter, max 65535 x 0.5 usec, maximum 32.787 msec
   __asm__ volatile ("1: sbiw %0,1" "\n\t" 
 		    "brne 1b"
 		    :"=w" (count):"0"(count));
 }
 
-void _delay_ms(uint16 ms) {
+void _delay_ms(uint16_t ms) {
     while (ms > 32) {
-        delayHalfCountUsec((uint16) 2000*32);
+        delayHalfCountUsec((uint16_t) 2000*32);
         ms -= 32;
     }
     if (ms > 0) {
-        delayHalfCountUsec((uint16) 2000*ms);
+        delayHalfCountUsec((uint16_t) 2000*ms);
     }
 }
 
@@ -495,8 +428,8 @@ void draw7seg(uint8_t x, uint8_t y, uint8_t segs, uint8_t inverted) {
 void drawdigit(uint8_t x, uint8_t y, uint8_t d, uint8_t inverted) {
   if (d < 10) {
     draw7seg(x, y, (__extension__( {
-                                  uint16 __addr16 =
-                                  (uint16) ((uint16) (numbertable_p + d));
+                                  uint16_t __addr16 =
+                                  (uint16_t) ((uint16_t) (numbertable_p + d));
                                   uint8_t __result;
     __asm__("lpm %0, Z" "\n\t": "=r"(__result):"z"(__addr16));
                                   __result;
@@ -504,8 +437,8 @@ void drawdigit(uint8_t x, uint8_t y, uint8_t d, uint8_t inverted) {
                     )), inverted);
   } else if ((d >= 'a') || (d <= 'z')) {
     draw7seg(x, y, (__extension__( {
-                                  uint16 __addr16 =
-                                  (uint16) ((uint16)
+                                  uint16_t __addr16 =
+                                  (uint16_t) ((uint16_t)
                                               (alphatable_p + (d - 'a')));
                                   uint8_t __result;
     __asm__("lpm %0, Z" "\n\t": "=r"(__result):"z"(__addr16));
@@ -556,7 +489,7 @@ void drawhseg(uint8_t x, uint8_t y, uint8_t inverted) {
   glcdFillRectangle(x + 18 - 1, y + 2, 1, 6 - 4, !inverted);
 }
 uint8_t dotw(uint8_t mon, uint8_t day, uint8_t yr) {
-  uint16 month, year;
+  uint16_t month, year;
   month = mon;
   year = 2000 + yr;
   if (mon < 3) {
@@ -580,18 +513,18 @@ void initbuttons(void) {
     (1 << (7)) | (1 << (3)) | (1 << (2)) | (1 << (1));
   (*(volatile uint8_t *) (0x7A)) |= (1 << (6));
 }
-uint16 readADC(void) {
+uint16_t readADC(void) {
   (*(volatile uint8_t *) (0x7A)) &= ~(1 << (3));
   (*(volatile uint8_t *) (0x7A)) |= (1 << (6));
   while (!((*(volatile uint8_t *) (0x7A)) & (1 << (4))));
-  return (*(volatile uint16 *) (0x78));
+  return (*(volatile uint16_t *) (0x78));
 }
 
 void __vector_21(void) __attribute__ ((signal, used, externally_visible));
 void __vector_21(void) {
-  uint16 reading, reading2;
+  uint16_t reading, reading2;
   __asm__ __volatile__("sei":::"memory");
-  reading = (*(volatile uint16 *) (0x78));
+  reading = (*(volatile uint16_t *) (0x78));
   if (reading > 735) {
     pressed = 0;
     last_buttonstate = 0;
@@ -806,8 +739,8 @@ void glcdWriteChar(unsigned char c, uint8_t inverted) {
   for (i = 0; i < 5; i++) {
     if (inverted) {
       glcdDataWrite(~(__extension__( {
-                                    uint16 __addr16 =
-                                    (uint16) ((uint16)
+                                    uint16_t __addr16 =
+                                    (uint16_t) ((uint16_t)
                                                 (&Font5x7
                                                  [((c - 0x20) * 5) + i]));
                                     uint8_t __result;
@@ -817,8 +750,8 @@ void glcdWriteChar(unsigned char c, uint8_t inverted) {
                       )));
     } else {
       glcdDataWrite((__extension__( {
-                                   uint16 __addr16 =
-                                   (uint16) ((uint16)
+                                   uint16_t __addr16 =
+                                   (uint16_t) ((uint16_t)
                                                (&Font5x7
                                                 [((c - 0x20) * 5) + i]));
                                    uint8_t __result;
@@ -840,8 +773,8 @@ void glcdWriteCharGr(u08 grCharIdx) {
   u08 grStartIdx = 0;
   for (idx = 0; idx < grCharIdx; idx++) {
     grStartIdx += (__extension__( {
-                                 uint16 __addr16 =
-                                 (uint16) ((uint16)
+                                 uint16_t __addr16 =
+                                 (uint16_t) ((uint16_t)
                                              (FontGr + grStartIdx));
                                  uint8_t __result;
     __asm__("lpm %0, Z" "\n\t": "=r"(__result):"z"(__addr16));
@@ -850,8 +783,8 @@ void glcdWriteCharGr(u08 grCharIdx) {
                    )) + 1;
   }
   grLength = (__extension__( {
-                            uint16 __addr16 =
-                            (uint16) ((uint16) (FontGr + grStartIdx));
+                            uint16_t __addr16 =
+                            (uint16_t) ((uint16_t) (FontGr + grStartIdx));
                             uint8_t __result;
   __asm__("lpm %0, Z" "\n\t": "=r"(__result):"z"(__addr16));
                             __result;
@@ -859,8 +792,8 @@ void glcdWriteCharGr(u08 grCharIdx) {
               ));
   for (idx = 0; idx < grLength; idx++) {
     glcdDataWrite((__extension__( {
-                                 uint16 __addr16 =
-                                 (uint16) ((uint16)
+                                 uint16_t __addr16 =
+                                 (uint16_t) ((uint16_t)
                                              (FontGr + (grStartIdx + 1) +
                                               idx));
                                  uint8_t __result;
@@ -1477,8 +1410,8 @@ void __vector_13(void) {
   (*(volatile uint8_t *) ((0x08) + 0x20)) ^= (1 << (3));
 }
 
-volatile uint16 millis = 0;
-volatile uint16 animticker;
+volatile uint16_t millis = 0;
+volatile uint16_t animticker;
 void __vector_14(void) __attribute__ ((signal, used, externally_visible));
 void __vector_14(void) {
   if (millis)
@@ -1532,7 +1465,7 @@ int main(void) {
   __asm__ __volatile__("in __tmp_reg__, __SREG__" "\n\t" "cli" "\n\t"
                        "sts %0, %1" "\n\t" "sts %0, __zero_reg__" "\n\t"
                        "out __SREG__,__tmp_reg__"
-                       "\n\t"::"M"(((uint16) &
+                       "\n\t"::"M"(((uint16_t) &
                                     ((*(volatile uint8_t *) (0x60))))),
                        "r"((uint8_t) ((1 << (4)) | (1 << (3)))):"r0");
   /* initialize the serial port for 19,200 bps */
@@ -1580,7 +1513,7 @@ int main(void) {
           "sts %0,%1" "\n\t" 
           "out __SREG__,__tmp_reg__" "\n\t" 
           "sts %0,%2" "\n\t" 
-          : : "M" (((uint16) &((*(volatile uint8_t *)(0x60))))), 
+          : : "M" (((uint16_t) &((*(volatile uint8_t *)(0x60))))), 
               "r" ((1 << (4)) | (1 << (3))), 
               "r" ((uint8_t) ((7 & 0x08 ? (1 << (5)) : 0x00) | (1 << (3)) | (7 & 0x07)) ) 
           : "r0" );
@@ -1590,52 +1523,35 @@ int main(void) {
   
   pacman_state s;
   s.x = 10; s.y = 10; s.dir = PACMAN_RIGHT; s.mouth = PACMAN_MOUTH_OPEN_2;
+  char needToDraw = 0;
   
   init_pacman(&s);
 
   while (1) {
     animticker = 128;
  
-    pacman_gobble(&s, 0, 0);
-    change_pacman(&s);
+    pacman_gobble2(&s);
     
     if (just_pressed & 0x1) {
         // the button closest to the power cable got pressed
         // acknowlege the button press
         just_pressed = 0;
-        
-        s.dir = (s.dir+1) % 4;
+        s.dir = (s.dir+1) & 3;
+        needToDraw = 1;
     }
     if (just_pressed & 0x3) {
         // the middle button got pressed
         // acknowlege the button press
         just_pressed = 0;
-        
-        switch (s.dir) {
-        case PACMAN_RIGHT:
-            s.dir = PACMAN_LEFT;
-            break;
-        case PACMAN_LEFT:
-            s.dir = PACMAN_RIGHT;
-            break;
-        case PACMAN_UP:
-            s.dir = PACMAN_DOWN;
-            break;
-        case PACMAN_DOWN:
-            s.dir = PACMAN_UP;
-            break;
-        }
+        s.dir ^= 2;
+        needToDraw = 1;
     }
     if (just_pressed & 0x5) {
         // the button farthest from the power cable got pressed
         // acknowlege the button press
         just_pressed = 0;
-        
-        if (s.dir > 0) {
-            s.dir--;
-        } else {
-            s.dir = 3;
-        }
+        s.dir = (s.dir-1) & 3;
+        needToDraw = 1;
     }
     if ((*(volatile uint8_t *)((0x03) + 0x20)) & (1 << (6))) {
         // the switch next to the light is on
@@ -1658,12 +1574,12 @@ void __vector_11(void) __attribute__ ((signal, used, externally_visible));
 void __vector_11(void) {
   (*(volatile uint8_t *) ((0x08) + 0x20)) ^= (1 << (3));
 }
-void beep(uint16 freq, uint16 duration) {
+void beep(uint16_t freq, uint16_t duration) {
   // use timer 1 for the piezo/buzzer 
   (*(volatile uint8_t *) (0x80)) = 0;  // TCCR1A
   (*(volatile uint8_t *) (0x81)) = (1 << (3)) | (1 << (0));  // TCCR1B = _BV(WGM12) | _BV(CS10)
   (*(volatile uint8_t *) (0x6F)) = (1 << (0)) | (1 << (1));  // TIMSK1 = _BV(TOIE1) | _BV(OCIE1A)
-  (*(volatile uint16 *) (0x88)) = (8000000 / freq) / 2;    // OCR1A = (F_CPU / freq) / 2
+  (*(volatile uint16_t *) (0x88)) = (8000000 / freq) / 2;    // OCR1A = (F_CPU / freq) / 2
   _delay_ms(duration);
   (*(volatile uint8_t *) (0x81)) = 0;  // TCCR1B
   // turn off piezo
@@ -1708,7 +1624,7 @@ void __vector_9(void) {
     timeoutcounter--;
   }
 }
-uint8_t leapyear(uint16 y) {
+uint8_t leapyear(uint16_t y) {
   return ((!(y % 4) && (y % 100)) || !(y % 400));
 }
 void tick(void) {
@@ -1716,8 +1632,8 @@ void tick(void) {
 inline uint8_t i2bcd(uint8_t x) {
   return ((x / 10) << 4) | (x % 10);
 }
-void uart_init(uint16 BRR) {
-  (*(volatile uint16 *) (0xC4)) = BRR;
+void uart_init(uint16_t BRR) {
+  (*(volatile uint16_t *) (0xC4)) = BRR;
   (*(volatile uint8_t *) (0xC1)) = (1 << (4)) | (1 << (3));
   (*(volatile uint8_t *) (0xC2)) = (1 << (3)) | (3 << 1);
   (*(volatile uint8_t *) ((0x0A) + 0x20)) |= (1 << (1));
@@ -1741,7 +1657,7 @@ int uart_putchar(char c) {
   do {
   } while ((!
             ((*(volatile uint8_t *)
-              (((uint16) & ((*(volatile uint8_t *) (0xC0)))))) & (1 <<
+              (((uint16_t) & ((*(volatile uint8_t *) (0xC0)))))) & (1 <<
                                                                     (5)))));
   (*(volatile uint8_t *) (0xC6)) = c;
   return 0;
@@ -1755,8 +1671,8 @@ char uart_getch(void) {
 }
 void ROM_putstring(const char *str, uint8_t nl) {
   uint8_t i;
-  for (i=0; (__extension__({ uint16 __addr16 = (uint16)((uint16)(&str[i])); uint8_t __result; __asm__ ( "lpm %0, Z" "\n\t" : "=r" (__result) : "z" (__addr16) ); __result; })); i++) {
-    uart_putchar((__extension__({ uint16 __addr16 = (uint16)((uint16)(&str[i])); uint8_t __result; __asm__ ( "lpm %0, Z" "\n\t" : "=r" (__result) : "z" (__addr16) ); __result; })));
+  for (i=0; (__extension__({ uint16_t __addr16 = (uint16_t)((uint16_t)(&str[i])); uint8_t __result; __asm__ ( "lpm %0, Z" "\n\t" : "=r" (__result) : "z" (__addr16) ); __result; })); i++) {
+    uart_putchar((__extension__({ uint16_t __addr16 = (uint16_t)((uint16_t)(&str[i])); uint8_t __result; __asm__ ( "lpm %0, Z" "\n\t" : "=r" (__result) : "z" (__addr16) ); __result; })));
   }
   if (nl) {
     uart_putchar('\n');
@@ -1777,16 +1693,16 @@ void uart_putc_hex(uint8_t b) {
   else
     uart_putchar((b & 0x0f) - 0x0a + 'a');
 }
-void uart_putw_hex(uint16 w) {
+void uart_putw_hex(uint16_t w) {
   uart_putc_hex((uint8_t) (w >> 8));
   uart_putc_hex((uint8_t) (w & 0xff));
 }
 void uart_putdw_hex(uint32_t dw) {
-  uart_putw_hex((uint16) (dw >> 16));
-  uart_putw_hex((uint16) (dw & 0xffff));
+  uart_putw_hex((uint16_t) (dw >> 16));
+  uart_putw_hex((uint16_t) (dw & 0xffff));
 }
-void uart_putw_dec(uint16 w) {
-  uint16 num = 10000;
+void uart_putw_dec(uint16_t w) {
+  uint16_t num = 10000;
   uint8_t started = 0;
   while (num > 0) {
     uint8_t b = w / num;
@@ -1799,7 +1715,7 @@ void uart_putw_dec(uint16 w) {
   }
 }
 void uart_put_dec(int8_t w) {
-  uint16 num = 100;
+  uint16_t num = 100;
   uint8_t started = 0;
   if (w < 0) {
     uart_putchar('-');
