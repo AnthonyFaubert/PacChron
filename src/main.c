@@ -1,6 +1,5 @@
 #include "avr_types.h"
 
-
 typedef enum {
  I2C_IDLE = 0, I2C_BUSY = 1,
  I2C_MASTER_TX = 2, I2C_MASTER_RX = 3,
@@ -9,15 +8,6 @@ typedef enum {
 
 
 typedef struct {
- int quot;
- int rem;
-} div_t;
-typedef struct {
- long quot;
- long rem;
-} ldiv_t;
-typedef struct
-{
     unsigned char low;
     unsigned char high;
     unsigned char extended;
@@ -39,11 +29,9 @@ extern char *strcat_P(char *, const prog_char *);
 extern void __eerd_block_m328p (void *__dst, const void *__src, size_t __n);
 extern char *strdup(const char *s1);
 extern void delay_s(uint8_t s);
-extern ldiv_t ldiv(long __num, long __denom) __asm__("__divmodsi4") __attribute__((__const__));
 extern uint8_t leapyear(uint16_t y);
 extern long random_r(unsigned long *__ctx);
 extern void glcdFillCircle(u08 xcenter, u08 ycenter, u08 radius, u08 color);
-extern div_t div(int __num, int __denom) __asm__("__divmodhi4") __attribute__((__const__));
 extern long atol(const char *__s) __attribute__((__pure__));
 extern void glcdInit(void);
 extern void glcdDataWrite(u08 data);
@@ -118,7 +106,6 @@ extern void __eeupd_block_m328p (const void *__src, void *__dst, size_t __n);
 extern void i2cReceiveByte(u08 ackFlag);
 extern void __eewr_byte_m328p (uint8_t *__p, uint8_t __value);
 extern void i2cSendByte(u08 data);
-extern long strtol(const char *__nptr, char **__endptr, int __base);
 extern u08 i2cMasterSendNI(u08 deviceAddr, u08 length, u08* data);
 extern size_t strcspn(const char *__s, const char *__reject) __attribute__((__pure__));
 extern void glcdWriteChar(unsigned char c, uint8_t inverted);
@@ -134,7 +121,6 @@ extern char *strpbrk_P(const char *__s, const prog_char * __accept) __attribute_
 extern size_t strcspn_P(const char *__s, const prog_char * __reject) __attribute__((__pure__));
 extern char *strrchr(const char *, int) __attribute__((__pure__));
 extern void setscore(void);
-extern void *realloc(void *__ptr, size_t __size) __attribute__((__malloc__));
 extern char *strncpy(char *, const char *, size_t);
 extern int strncasecmp_P(const char *, const prog_char *, size_t) __attribute__((__pure__));
 extern size_t strlen(const char *) __attribute__((__pure__));
@@ -143,12 +129,10 @@ extern void initdisplay(uint8_t inverted);
 extern size_t strspn(const char *__s, const char *__accept) __attribute__((__pure__));
 extern int strncmp(const char *, const char *, size_t) __attribute__((__pure__));
 extern void exit(int __status) __attribute__((__noreturn__));
-extern unsigned long strtoul(const char *__nptr, char **__endptr, int __base);
 extern u08 i2cMasterReceiveNI(u08 deviceAddr, u08 length, u08 *data);
 extern void drawsegment(uint8_t s, uint8_t x, uint8_t y, uint8_t inverted);
 extern char *strupr(char *);
 extern void glcdRectangle(u08 x, u08 y, u08 a, u08 b);
-extern void *bsearch(const void *__key, const void *__base, size_t __nmemb, size_t __size, int (*__compar)(const void *, const void *));
 extern void printnumber(uint8_t n, uint8_t inverted);
 extern void i2cMasterSend(u08 deviceAddr, u08 length, u08 *data);
 extern char *strtok(char *, const char *);
@@ -182,7 +166,6 @@ extern void *calloc(size_t __nele, size_t __size) __attribute__((__malloc__));
 extern char *strlwr(char *);
 extern char *strncat_P(char *, const prog_char *, size_t);
 extern int atoi(const char *__s) __attribute__((__pure__));
-extern void free(void *__ptr);
 extern void *memchr(const void *, int, size_t) __attribute__((__pure__));
 extern volatile uint8_t screenmutex;
 extern int rand_r(unsigned long *__ctx);
@@ -1393,9 +1376,6 @@ void glcdDelay(u16 p) {
     for (j = 0; j < 10; j++);
 }
 
-extern void *bsearch(const void *__key, const void *__base, size_t __nmemb,
-                     size_t __size, int (*__compar) (const void *,
-                                                     const void *));
 
 volatile uint8_t old_h, old_m, old_s;
 volatile uint8_t timeunknown = 1;

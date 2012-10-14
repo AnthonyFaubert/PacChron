@@ -35,10 +35,7 @@ put:
 
 
 clean:
-	@touch bin/tmp src/indented.c generators/pacman-bitmaps.py
-	@rm bin/* src/indented.c src/pm-bitmaps.h
-	@touch tmp~ && rm *~
-	@cd src && touch tmp~ && rm *~
+	@rm -f bin/* src/indented.c src/pm-bitmaps.h *~ src/*~ 
 	@echo "Done!"
 
 
